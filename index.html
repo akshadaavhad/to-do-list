@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+   <style>
+    body{
+    background-color: 	 hsl(179, 38%, 77%);
+}
+h1{
+text-align: center;
+}
+.action-container{
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
+.list-container{
+width: 550px;
+height: 350px;
+display: block;
+margin: 20px auto;
+background-color: rgb(128, 147, 210);
+padding: 10px;
+box-shadow:  0 0 10px 3px gainsboro;
+border-radius: 5px;
+overflow-y: scroll;
+}
+@media screen and (min-width:600px) and (max-width:900px){
+.list-container{
+width: 50%;
+}
+}
+.todoItem{
+font-size: 18px;
+background-color: white;
+padding:10px 8px ;
+margin: 5px;
+cursor: pointer;
+border-radius: 20px;
+}
+.input-todo{
+border-radius: 8px;
+margin-right: 15px;
+height: 20px;
+width: 300px;
+border: 2px solid black;
+padding: 5px;
+}
+.btn{
+font-size: medium;
+cursor: pointer;
+font-size: 18px;
+color: #000;
+border: none;
+border-radius: 10px;
+padding: 10px 20px;
+background-color: hwb(199 47% 13%);
+}
+   </style>
+
+
+
+</head>
+<body>
+    <h1>To Do List </h1>
+    <div class="list-container" id="list-container">
+      
+    </div>
+    <div class="action-container">
+        <input type="text" class="input-todo" id="input-todo" placeholder="Enter your task...">
+        <button onclick="add()" class="btn">Add</button>
+       
+    </div>
+   
+
+
+    <script>
+        const todoList = [];
+
+function add(){
+ const inputElement = document.getElementById('input-todo');
+ todoList.push(inputElement.value);
+ inputElement.value = ""; 
+
+ renderToDoList();
+}
+
+function renderToDoList(){
+ const listContainer = document.getElementById('list-container');
+ listContainer.innerHTML = "";
+ for(const todoItem of todoList)
+ {
+     listContainer.innerHTML += `<div class="todoItem">
+         <input type="checkbox">
+         ${todoItem}</div>` ;
+ }
+}
+ </script>
+</body>
+</html>
